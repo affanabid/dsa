@@ -23,9 +23,9 @@ int main(){
     int n=6;
     // cin>>n;
 
-    int arr[n] = {5,10,2,6,9,6};
+    int arr[n] = {1, 4, 8, 9, 11, 18};
     // for (int i=0; i<n; i++){
     //     cin>>arr[i];
     // }
-    cout<<binarySearch(arr, n, 2);
+    cout<<binarySearch(arr, n, 11);
 }
