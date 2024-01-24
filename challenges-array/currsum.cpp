@@ -24,8 +24,8 @@ int main(){
     for (int i=start; i<end+1; i++){
         currSum += a[i];
     }
-  }
+    }
     for (int i=start; i<end+1; i++){
-        cout<<a[i]<<endl;
+        cout<<a[i]<<endl; 
     }
 }
