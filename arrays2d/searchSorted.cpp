@@ -8,7 +8,7 @@ int main(){
     int row = 0, column = c-1, element=8;
     while (row >= 0 && column >= 0){
         if (arr[row][column] == element){
-            cout<<"Poistion: "<<row<<","<<column<<endl;
+            cout<<"Position: "<<row<<","<<column<<endl;
             break;
         }
         else if (arr[row][column] > element){
