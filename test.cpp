@@ -4,5 +4,6 @@ using namespace std;
 
 int main(){
   
-    cout<<15/2;
+    char word[100] = "abc";
+    cout<<word[1];
 }
