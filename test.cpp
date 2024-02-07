@@ -4,6 +4,6 @@ using namespace std;
 
 int main(){
   
-    char word[100] = "abc";
-    cout<<word[1];
+    string s = "abc";
+    cout<<s.substr(0, 2);
 }
