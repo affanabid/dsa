@@ -4,5 +4,6 @@ using namespace std;
 
 int main(){
   
-    cout<<15/2;
+    string s = "abc";
+    cout<<s.substr(0, 2);
 }

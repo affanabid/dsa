@@ -17,4 +17,4 @@ int main(){
     int arr[n] = {2,4,6,8,0};
     int k = 14;
     pairsum(arr, n, k);
-}
+}   
