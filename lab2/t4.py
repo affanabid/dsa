@@ -25,13 +25,16 @@ class LinkedList:
     def insert_before(self, key, value):
         newNode = Node(value)
         current = self.head
+
         while current.next is not None:
-            if current.next == key:
+            if current.next.info == key:
                 newNode.next = current.next
                 current.next = newNode
                 break
             current = current.next
-            # next = current.next
+
+        if current.next is None:
+            raise KeyError("Key not found in the linked list")
 
     def insert_after(self, key, value):
         newNode = Node(value)
