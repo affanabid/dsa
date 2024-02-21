@@ -13,4 +13,4 @@ def maxSubarray(array, n):
     return maxSum
         
 
-print(maxSubarray([9, 9, 8, 8], 4))
+print(maxSubarray([9, 9, 8, 8], 4)) 
