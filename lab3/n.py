@@ -7,30 +7,28 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def shuffleMerge(self, list1, list2):
-        # Check if both input lists are empty
-        if list1.head is None or list2.head is None:
-            return
+    # def shuffleMerge(self, list1, list2):
+    #     if list1.head is None or list2.head is None:
+    #         return
         
-        # Traverse both lists simultaneously and update the pointers
-        current1 = list1.head
-        current2 = list2.head
-        while current1 is not None and current2 is not None:
-            temp1 = current1.next
-            temp2 = current2.next
+    #     current1 = list1.head
+    #     current2 = list2.head
+    #     while current1 is not None and current2 is not None:
+    #         temp1 = current1.next
+    #         temp2 = current2.next
 
-            current1.next = current2
-            current2.next = temp1
+    #         current1.next = current2
+    #         current2.next = temp1
 
-            current1 = temp1
-            current2 = temp2
+    #         current1 = temp1
+    #         current2 = temp2
 
-        # Update the head of the calling object's list
-        self.head = list1.head
-        # Empty the input lists
-        list1.head = None
-        list2.head = None
-
+    #     # Update the head of the calling object's list
+    #     self.head = list1.head
+    #     # Empty the input lists
+    #     list1.head = None
+    #     list2.head = None
+        
     def append(self, info):
         new_node = Node(info)
         if self.head is None:

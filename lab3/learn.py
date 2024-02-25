@@ -90,10 +90,32 @@ class SinglyLinkedList:
             current = current.next
         current.next = list2.head
         
+    # def shuffleMerge(self, list1, list2):
+    #     if list1.head is None or list2.head is None:
+    #         return
+    #     current1 = list1.head  
+    #     current2 = list2.head
+    #     while current1 is not None and current2 is not None:
+    #         temp1 = current1.next
+    #         temp2 = current2.next
+
+    #         current1.next = current2
+    #         current2.next = temp1
+
+    #         # current1 = current1.next
+    #         current1 = temp1
+    #         # current2 = current2.next
+    #         current2 = temp2
+    #     self.head = list1.head
+    #     list1.head = None
+    #     list2.head = None
     def shuffleMerge(self, list1, list2):
+        # Check if both input lists are empty
         if list1.head is None or list2.head is None:
             return
-        current1 = list1.head  
+        
+        # Traverse both lists simultaneously and update the pointers
+        current1 = list1.head
         current2 = list2.head
         while current1 is not None and current2 is not None:
             temp1 = current1.next
@@ -102,16 +124,29 @@ class SinglyLinkedList:
             current1.next = current2
             current2.next = temp1
 
-            # current1 = current1.next
             current1 = temp1
-            # current2 = current2.next
             current2 = temp2
+
+        # Update the head of the calling object's list
         self.head = list1.head
+        # Empty the input lists
         list1.head = None
         list2.head = None
 
     def reverse(self):
-        pass
+        prev = self.head
+        current = self.head.next
+        prev.next = None
+        while current is not None:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+        self.head = prev
+
+    def recursive_reverse(self):
+        current = self.head
+        helper_recursive(self, current)
 
     def removeDuplicates(self):
         prev = self.head
@@ -131,7 +166,16 @@ class SinglyLinkedList:
             print(current.info, end=' ')
             current = current.next
         print()
-
+      
+def helper_recursive(obj, current, prev=None):
+    if current.next is None:
+        obj.head = current
+        current.next = prev
+        return
+    helper_recursive(obj, current.next, current)
+    current.next = prev
+    
+    
 def main():
     a = SinglyLinkedList()
     a.insert_at_head(5)
@@ -139,11 +183,15 @@ def main():
     a.insert_at_tail(4)
     a.insert_before(5, 6)
     a.insert_after(5, 8)
-    a.update(3,2)
-    a.update(4,2)
-    a.search(9)
+    a.update(3,9)
+    a.update(4,7)
+    # a.search(9)
     a.remove(5)
     a.display()
+    a.reverse()
+    a.display()
+    # a.test()
+    print()
     b = SinglyLinkedList()
     b.insert_at_head(5)
     b.insert_at_head(3)
@@ -152,13 +200,15 @@ def main():
     # b.insert_at_tail(2)
     # b.insert_at_tail(3)
     b.display()
+    b.recursive_reverse()
+    b.display()
     c = SinglyLinkedList()
-    c.combine(a, b)
-    c.display()
+    # c.combine(a, b)
+    # c.display()
     # b.removeDuplicates()
     # b.display()
     d = SinglyLinkedList()
-    d.shuffleMerge(a,b)
-    d.display()
+    # d.shuffleMerge(a,b)
+    # d.display()
 
 main()
