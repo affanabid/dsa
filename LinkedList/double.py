@@ -115,19 +115,63 @@ class DoublyLinkedList:
         current = self.head
         while current is not None:
             if current.info == key:
+
                 if current.prev is None:
                     print('No element before first element')
+                
                 elif current.prev.prev is None:
-                    current.prev = None
                     self.head = current
+                    current.prev = None
                     del current.prev
+                
                 else:
-                    current.prev = current.prev.prev
                     current.prev.prev.next = current
+                    current.prev = current.prev.prev
                     del current.prev
                 return
             current = current.next
+
+    def remove_after(self, key):
+        current = self.head
+        while current is not None:
+            if current.info == key:
+
+                if current.next == None:
+                    print('No node after last node')
+
+                elif current.next.next == None:
+                    self.tail = current
+                    current.next = None
+                    del current.next
+                    
+                else:
+                    current.next = current.next.next
+                    current.next.next.prev = current
+                    del current.next
+                return
+            current = current.next
+
+    def search(self, key):
+        current = self.head
+        while current is not None:
+            if current.info == key:
+                print('Key found')
+                return True
+            current = current.next
         print('Key not found')
+        return False
+
+    def length(self):
+        count = 0
+        current = self.head
+        if current is None:
+            print('Empty')
+            return 0
+        while current is not None:
+            count += 1
+            current = current.next
+        print('Length: ', count)
+        return count
 
     def display(self):
         current = self.head
@@ -146,7 +190,10 @@ def main():
     a.update(6, 3)
     a.remove_at_head()
     a.remove_at_tail()
-    a.remove_before(4)
+    # a.remove_before(4)
+    a.remove_after(2)
     a.display()
+    a.length()
+    # a.search(1)
 
 main()
