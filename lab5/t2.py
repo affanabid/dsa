@@ -51,7 +51,6 @@ def convertToPrefix(infix_expr):
     prefix_exp = remove_brackets(prefix)
     return prefix_exp
 
-    
 infix_expression = input("Enter an infix expression: ")
 prefix_expression = convertToPrefix(infix_expression)
 print("Prefix expression:", prefix_expression)
