@@ -124,25 +124,52 @@ class LinkedList:
             current_node = current_node.next
         print()
 
+    def swap(self):
+        if self.head == None:
+            return self.head
+        elif self.head.next is None:
+            return self.head
+        else:
+            current1 = self.head
+            current2 = current1.next
+            self.head = current2
+            while current2 is not None:
+                temp = current2.next
+                current2.next = current1
+                current1.next = temp
+                
+                if current1.next is None or current1.next.next is None:
+                    
+                    break
+                current2 = current2.next.next.next
+                new_temp = current1.next
+                current1.next = current2
+                current1 = new_temp
+
 def main():
     obj= LinkedList()
-    obj.insert_at_head(5)
+    obj.insert_at_head(1)
+    obj.insert_at_tail(2)
+    obj.insert_at_tail(3)
     obj.insert_at_tail(4)
-    obj.insert_at_tail(7)
-    obj.insert_at_tail(9)
-    obj.insert_at_tail(6)
-    obj.insert_at_tail(6)
-    obj.insert_at_tail(4)
-    obj.insert_before(7,3)
-    obj.insert_after(7,8)
-    obj.update(6,4)
-    obj.search(7)
-    obj.remove_at_head()
-    obj.remove_at_tail()
+    # obj.insert_at_tail(5)
+
+    # obj.insert_at_tail(9)
+    # obj.insert_at_tail(6)
+    # obj.insert_at_tail(6)
+    # obj.insert_at_tail(4)
+    # obj.insert_before(7,3)
+    # obj.insert_after(7,8)
+    # obj.update(6,4)
+    # obj.search(7)
+    # obj.remove_at_head()
+    # obj.remove_at_tail()
+    # obj.display_list()
+    # obj.remove_before(8)
+    # obj.display_list()
+    # obj.remove_after(9)
     obj.display_list()
-    obj.remove_before(8)
-    obj.display_list()
-    obj.remove_after(9)
+    obj.swap()
     obj.display_list()
         
 main()
