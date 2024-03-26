@@ -45,5 +45,7 @@
 # s = Solution()
 # s.maxArea(height)
 
-name = 'affan'
-print(len(name))
+# name = 'affan'
+# print(len(name))
+
+print(-1//3)
