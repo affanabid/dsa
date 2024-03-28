@@ -48,4 +48,10 @@
 # name = 'affan'
 # print(len(name))
 
-print(-1//3)
+from collections import Counter
+
+nums = [-1,2,-1,4,3,2,1]
+c = Counter(nums).most_common(2)
+for a in c:
+    print(a[0])
+# print(c)
