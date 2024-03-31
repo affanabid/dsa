@@ -48,10 +48,20 @@
 # name = 'affan'
 # print(len(name))
 
-from collections import Counter
+# from collections import Counter
 
-nums = [-1,2,-1,4,3,2,1]
-c = Counter(nums).most_common(2)
-for a in c:
-    print(a[0])
-# print(c)
+# nums = [-1,2,-1,4,3,2,1]
+# print(nums.pop())
+
+# print(nums.pop())
+# i = 0
+# while True:
+#     print(i)
+#     i += 1
+#     if i == 5:
+#         break
+s = [1]
+if s:
+    print('y')
+else:
+    print('n')
