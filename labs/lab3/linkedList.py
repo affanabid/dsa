@@ -146,6 +146,83 @@ class LinkedList:
                 current1.next = current2
                 current1 = new_temp
     
+    def length(self, head):
+        current = head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        return count
+
+    def addTwoNumbers(self, l1, l2):
+        dummy = Node(0)
+        tail = dummy
+        carry = 0
+
+        while l1 or l2 or carry:
+            if l1:
+                digit1 = l1.val
+            else:
+                digit1 = 0
+            if l2:
+                digit2 = l2.val
+            else:
+                digit2 = 0
+
+            sum = digit1 + digit2 + carry
+            digit = sum % 10
+            carry = sum // 10
+
+            newNode = Node(digit)
+            tail.next = newNode
+            tail = tail.next
+
+            if l1:
+                l1 = l1.next
+            else:
+                l1 = None
+            if l2:
+                l2 = l2.next
+            else:
+                l2 = None
+        
+        result = dummy.next
+        dummy.next = None
+        return result
+    
+    def padList(self, head, padding):
+        new_head = head
+        for i in range(padding):
+            newNode = Node(0)
+            newNode.next = new_head
+            new_head = newNode
+        return new_head
+    
+    def removeDuplicates(self):
+        prev = self.head
+        current = self.head
+        seen = []
+        while current is not None:
+            if current.info in seen:
+                prev.next = current.next
+            else:
+                seen.append(current.info)
+            prev = current
+            current = current.next
+
+    def recursive_reverse(self):
+        current = self.head
+        helper_recursive(self, current)
+
+def helper_recursive(obj, current, prev=None):
+    if current.next is None:
+        obj.head = current
+        current.next = prev
+        return
+    helper_recursive(obj, current.next, current)
+    current.next = prev
+
+    
     def middle(self):
         current1 = self.head
         current2 = self.head
@@ -189,26 +266,22 @@ class LinkedList:
             
 def main():
     obj= LinkedList()
-    obj.insert_at_head(1)
-    obj.insert_at_tail(3)
-    obj.insert_at_tail(5)
+    obj.insert_at_tail(9)
+    obj.insert_at_tail(9)
+    obj.insert_at_tail(9)
+    obj.insert_at_tail(9)
+    obj.insert_at_tail(9)
+    obj.insert_at_tail(9)
+    obj.insert_at_tail(9)
 
-    ob = LinkedList()
-    ob.insert_at_head(2)
-    ob.insert_at_tail(4)
-    ob.insert_at_tail(6)
-    ob.insert_at_tail(8) 
-    obj.middle()
-    ob.middle()
-    # obj.insert_at_tail(5)
-
-    # obj.insert_at_tail(9)
-    # obj.insert_at_tail(6)
-    # obj.insert_at_tail(6)
+    # obj.insert_at_tail(2)
+    # obj.insert_at_tail(3)
     # obj.insert_at_tail(4)
-    # obj.insert_before(7,3)
-    # obj.insert_after(7,8)
-    # obj.update(6,4)
+    o = LinkedList()
+    o.insert_at_tail(9)
+    o.insert_at_tail(9)
+    o.insert_at_tail(9)
+
     # obj.search(7)
     # obj.remove_at_head()
     # obj.remove_at_tail()
@@ -217,9 +290,9 @@ def main():
     # obj.display_list()
     # obj.remove_after(9)
     obj.display_list()
-    obj.merge(obj.head, ob.head)
-    # obj.display_list()
-    # obj.reverse()
+    o.display_list()
+    # print(o.length(obj.head))
+    obj.addTwoNumbers(obj.head, o.head)
     # obj.swap()
     obj.display_list()
         
