@@ -145,13 +145,61 @@ class LinkedList:
                 new_temp = current1.next
                 current1.next = current2
                 current1 = new_temp
+    
+    def middle(self):
+        current1 = self.head
+        current2 = self.head
+        while current2 is not None and current2.next is not None:
+            current1 = current1.next
+            current2 = current2.next.next
+        print(current1.data)
+    
+    def reverse(self):
+        if self.head is None:
+            return
+        prev = None
+        current = self.head
+        nextNode = None
+        while current:
+            nextNode = current.next
+            current.next = prev
+            prev = current
+            current = nextNode
+        self.head = prev
 
+# def merge(list1, list2):
+#     new = LinkedList()
+#     current1 = list1.head
+#     current2 = list2.head
+#     while current1 or current2:
+#         if current1:
+#             new.insert_at_tail(current1.data)
+#             current1 = current1.next
+#         if current2:
+#             new.insert_at_tail(current2.data)
+#             current2 = current2.next
+#     return new
+    def merge(self, list1, list2):
+        while list2:
+            nextNode = list1.next
+            list1.next = list2
+            list1 = list2
+            list2 = nextNode
+        
+            
 def main():
     obj= LinkedList()
     obj.insert_at_head(1)
-    obj.insert_at_tail(2)
     obj.insert_at_tail(3)
-    obj.insert_at_tail(4)
+    obj.insert_at_tail(5)
+
+    ob = LinkedList()
+    ob.insert_at_head(2)
+    ob.insert_at_tail(4)
+    ob.insert_at_tail(6)
+    ob.insert_at_tail(8) 
+    obj.middle()
+    ob.middle()
     # obj.insert_at_tail(5)
 
     # obj.insert_at_tail(9)
@@ -169,7 +217,10 @@ def main():
     # obj.display_list()
     # obj.remove_after(9)
     obj.display_list()
-    obj.swap()
+    obj.merge(obj.head, ob.head)
+    # obj.display_list()
+    # obj.reverse()
+    # obj.swap()
     obj.display_list()
         
 main()
