@@ -51,7 +51,6 @@
 # from collections import Counter
 
 # nums = [-1,2,-1,4,3,2,1]
-<<<<<<< HEAD
 # print(nums.pop())
 
 # print(nums.pop())
@@ -61,11 +60,30 @@
 #     i += 1
 #     if i == 5:
 #         break
-=======
-# c = Counter(nums).most_common(2)
-# for a in c:
-#     print(a[0])
-# # print(c)
-print(10//10)
-print(20//10)
->>>>>>> 31273f22facdbb7a59c7b921484e27e8093bea5e
+def is_number(s):
+    return s.isdigit() and s.strip() != ''
+
+# print(is_number('-6'))
+# from collections import Counter
+
+# my_list = [1, 2, 3, 1, 2, 1, 1, 4]
+# my_counter = Counter(my_list)
+# count_list = list(my_counter.items())
+
+# print(count_list)
+# print(my_counter)
+# from collections import Counter
+# s = 'leetcode'
+# c = Counter(s)
+# for alphabet, count in c.items():
+#     if count == 1:
+#         print(alphabet)
+letter = None
+for i in range(5):
+    if i == 2:
+        letter = i
+    print(i)
+if letter:
+    print(1)
+else:
+    print(0)

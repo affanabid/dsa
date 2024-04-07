@@ -1,41 +1,60 @@
-class ListBaseCircularQueue:
+class ListCircularQueue():
     def __init__(self, size):
         self.size = size
-        self.head = self.tail = 0
-        self.count = 0
-        self.queue = [] * size
+        self.queue = [None for i in range(size)]
+        self.front = self.rear = -1
 
     def enqueue(self, data):
-        if self.count == self.size:
-            raise IndexError("CircularQueue is full")
-        self.queue.append(data)
-        self.tail = (self.tail + 1) % self.size
-        self.count += 1
+        if (self.rear + 1) % self.size == self.front:
+            print('Queue Full')
+
+        elif self.front == -1:
+            self.front = 0
+            self.rear = 0
+            self.queue[self.rear] = data
+
+        else:
+            self.rear = (self.rear + 1) % self.size
+            self.queue[self.rear] = data
 
     def dequeue(self):
-        if not self.queue or self.count == 0:
-            raise IndexError("CircularQueue is empty")
-        dequeued_data = self.queue[0]
-        self.queue=self.queue[1:]
-        self.count -= 1
-        return dequeued_data
+        if self.front == -1:
+            print('Queue Empty')
+            return
+        elif self.rear == self.front:
+            temp = self.queue[self.front]
+            self.rear = -1
+            self.front = -1
+            return temp
+        else:
+            temp = self.queue[self.front]
+            self.front = (self.front + 1) % self.size
+            return temp
     
     def isempty(self):
         return self.count == 0
 
-    def sized(self):
-        return self.count
-
     def display(self):
-        if not self.queue or self.count == 0:
-            print("CircularQueue is empty")
-            return
-        for i in range(len(self.queue)):
-            if self.queue[i] is not None:
-                print(self.queue[i],end=' ')
-        print()
+        if self.front == -1:
+            print('Queue empty')
+            return 
+        elif self.rear >= self.front:
+            print('Elements: ', end='')
+            for i in range(self.front, self.rear+1):
+                print(self.queue[i], end=' ')
+            print()
+        else:
+            print('Elements: ', end='')
+            for i in range(self.front, self.size):
+                print(self.queue[i], end=' ')
+            for i in range(0, self.rear + 1):
+                print(self.queue[i], end=' ')
+            print()
+        
+        if (self.rear + 1) % self.size == self.front:
+            print('Queue full')
 
-cq = ListBaseCircularQueue(5)
+cq = ListCircularQueue(5)
 cq.enqueue(5)
 cq.enqueue(4)
 cq.enqueue(3)
@@ -44,5 +63,7 @@ cq.enqueue(1)
 cq.display()
 cq.dequeue()
 cq.dequeue()
+cq.display()
+
 # print(cq.sized())
 # cq.display()
