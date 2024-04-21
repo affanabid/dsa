@@ -38,7 +38,7 @@ class Queue:
             return
         while current is not None:
             print(current.info, end=' ')
-            current = current.next
+            current = current.next 
         print()
 
 queue = Queue()

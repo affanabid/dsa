@@ -78,12 +78,15 @@ def is_number(s):
 # for alphabet, count in c.items():
 #     if count == 1:
 #         print(alphabet)
-letter = None
-for i in range(5):
-    if i == 2:
-        letter = i
-    print(i)
-if letter:
-    print(1)
-else:
-    print(0)
+
+
+brackets = {
+    ')' : ')',
+    '}' : '}',
+    ']' : ']',
+    }
+
+s = ['(', ')', '{', ']', '}']
+for ss in s:
+    if ss in brackets:
+        print(ss)
