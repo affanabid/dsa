@@ -78,15 +78,8 @@ def is_number(s):
 # for alphabet, count in c.items():
 #     if count == 1:
 #         print(alphabet)
-
-
-brackets = {
-    ')' : ')',
-    '}' : '}',
-    ']' : ']',
-    }
-
-s = ['(', ')', '{', ']', '}']
-for ss in s:
-    if ss in brackets:
-        print(ss)
+nums = [4,5,6,7,0,1,2]
+mn = min(nums)
+m = nums.index(mn)
+print(mn)
+print(m)
