@@ -214,6 +214,14 @@ class LinkedList:
         current = self.head
         helper_recursive(self, current)
 
+    
+    def merge(self, list1, list2):
+        while list2:
+            nextNode = list1.next
+            list1.next = list2
+            list1 = list2
+            list2 = nextNode
+
 def helper_recursive(obj, current, prev=None):
     if current.next is None:
         obj.head = current
@@ -256,31 +264,22 @@ def helper_recursive(obj, current, prev=None):
 #             new.insert_at_tail(current2.data)
 #             current2 = current2.next
 #     return new
-    def merge(self, list1, list2):
-        while list2:
-            nextNode = list1.next
-            list1.next = list2
-            list1 = list2
-            list2 = nextNode
         
             
 def main():
     obj= LinkedList()
     obj.insert_at_tail(9)
-    obj.insert_at_tail(9)
-    obj.insert_at_tail(9)
-    obj.insert_at_tail(9)
-    obj.insert_at_tail(9)
-    obj.insert_at_tail(9)
-    obj.insert_at_tail(9)
+    obj.insert_at_tail(7)
+    obj.insert_at_tail(4)
+    obj.insert_at_tail(2)
 
     # obj.insert_at_tail(2)
     # obj.insert_at_tail(3)
     # obj.insert_at_tail(4)
     o = LinkedList()
-    o.insert_at_tail(9)
-    o.insert_at_tail(9)
-    o.insert_at_tail(9)
+    o.insert_at_tail(1)
+    o.insert_at_tail(3)
+    o.insert_at_tail(8)
 
     # obj.search(7)
     # obj.remove_at_head()
@@ -289,10 +288,13 @@ def main():
     # obj.remove_before(8)
     # obj.display_list()
     # obj.remove_after(9)
+
     obj.display_list()
     o.display_list()
+    obj.merge(obj.head, obj.head)
     # print(o.length(obj.head))
-    obj.addTwoNumbers(obj.head, o.head)
+    # obj.addTwoNumbers(obj.head, o.head)
+
     # obj.swap()
     obj.display_list()
         
