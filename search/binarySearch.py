@@ -16,7 +16,9 @@ def recursiveBinarySearch(array, target, left, right):
 
 array = [5,2,7,1,9]
 target = 9
-print(recursiveBinarySearch(array, target, 0, len(arradef binarySearch(array, target):
+print(recursiveBinarySearch(array, target, 0, len(array)))
+
+def binarySearch(array, target):
     left = 0
     right = len(array) - 1
 
