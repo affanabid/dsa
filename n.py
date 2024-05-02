@@ -78,8 +78,14 @@ def is_number(s):
 # for alphabet, count in c.items():
 #     if count == 1:
 #         print(alphabet)
-nums = [4,5,6,7,0,1,2]
-mn = min(nums)
-m = nums.index(mn)
-print(mn)
-print(m)
+
+# e = 'abcbac'
+# s = set(e)
+# print(e)
+# print(s)
+# for i in s:
+#     print(i)
+
+e = [1,2,3,4,5]
+b = [1,2,3,4, 5]
+print(e==b)
