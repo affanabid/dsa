@@ -85,7 +85,5 @@ def is_number(s):
 # print(s)
 # for i in s:
 #     print(i)
-
-e = [1,2,3,4,5]
-b = [1,2,3,4, 5]
-print(e==b)
+print(15//7)
+print(15/7)
