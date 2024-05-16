@@ -38,6 +38,60 @@ class AVLTree:
             return self.leftRotation(root)
         
         return root
+    
+    def delete(self, root,  key):
+        if root is None:
+            return root
+        elif key < root.value:
+            root.left = self.delete(root.left, key)
+        elif key > root.value:
+            root.right = self.delete(root.right, key)
+        else:
+            if root.left is None:
+                temp = root.right
+                root = None
+                return temp
+            
+            elif root.right is None:
+                temp = root.left
+                root = None
+                return temp
+            
+            temp = self.getMinValue(root.right)
+            root.value = temp.value
+            root.value = self.delete(root.right, temp.value)
+
+        if root is None:
+            return root
+        
+        root.height = 1 + max(self.getHeight(root.left), self.getHeight(root.right))
+
+        balanceFactor = self.getBalanceFactor(root)
+
+        # case-1: Left Left
+        if balanceFactor > 1 and self.getBalanceFactor(root.left) >= 0:
+            return self.rightRotation(root)
+        
+        # case-2: Right Right
+        elif balanceFactor < -1 and self.getBalanceFactor(root.right) <= 0:
+            return self.leftRotation(root)
+        
+        # case-3: Left-Right
+        elif balanceFactor > 1 and self.getBalanceFactor(root.left) < 0:
+            root.left = self.leftRotation(root.left)
+            return self.rightRotation(root)
+        
+        # case-4: Right Left
+        elif balanceFactor < -1 and self.getBalanceFactor(root.right) > 0:
+            root.right = self.rightRotation(root.right)
+            return self.leftRotation(root)
+        
+        return root
+
+    def getMinValue(self, node):
+        if root is None or root.left is None:
+            return root
+        return self.getMinValue(root.left)
 
     def leftRotation(self, node):
         child = node.right
@@ -75,7 +129,7 @@ class AVLTree:
             return 0
         bf = self.getHeight(root.left) - self.getHeight(root.right)
         return bf
-
+    
     def preOrder(self, root): 
         if not root: 
             return
@@ -83,7 +137,7 @@ class AVLTree:
         print("{0} ".format(root.value), end="") 
         self.preOrder(root.left) 
         self.preOrder(root.right) 
-
+    
 myTree = AVLTree() 
 root = None
   
